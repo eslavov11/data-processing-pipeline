@@ -8,17 +8,11 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-    <artifactId>data-processing-pipeline-consumer</artifactId>
-	<name>data-processing-pipeline-consumer</name>
-	<description>Data processing pipeline consumer</description>
+    <artifactId>data-processing-pipeline-producer</artifactId>
+	<name>data-processing-pipeline-producer</name>
+	<description>Data processing pipeline producer</description>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.data-processing-pipeline</groupId>
-			<artifactId>data-access</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

@@ -1,13 +1,12 @@
-package com.dataprocessingpipeline.consumer;
+package com.dataprocessingpipeline.producer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DataProcessingPipelineConsumerApplication {
+public class ProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DataProcessingPipelineConsumerApplication.class, args);
+		SpringApplication.run(ProducerApplication.class, args);
 	}
-
 }
