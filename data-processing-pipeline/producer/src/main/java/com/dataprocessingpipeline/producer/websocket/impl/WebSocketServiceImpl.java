@@ -18,6 +18,6 @@ public class WebSocketServiceImpl implements WebSocketService {
     }
 
     public void sendMessage(Object message) {
-        this.messagingTemplate.convertAndSend(TOPIC, message);
+        this.messagingTemplate.convertAndSend("/topic/" + TOPIC, message);
     }
 }

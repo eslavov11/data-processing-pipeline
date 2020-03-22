@@ -1,0 +1,26 @@
+<h1 class="h1 text-center">Send message</h1>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="form-group">
+    <label for="message">Message JSON:</label>
+    <br/>
+    <textarea name="message" id="message" required="required" rows="10" class="form-control" ngModel
+              placeholder="JSON"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Send message</button>
+</form>
+
+<h1 class="h1 text-center">Real time messages</h1>
+
+<div class="row">
+  <div *ngFor="let message of this.messageService.messages" class="col-md-3">
+    <div class="card mb-4 box-shadow">
+      <div class="card-body">
+        <div class="card-text">
+          <p>{{message}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
