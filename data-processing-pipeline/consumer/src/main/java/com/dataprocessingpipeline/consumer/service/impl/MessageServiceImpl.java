@@ -1,4 +1,4 @@
-package com.dataprocessingpipeline.consumer.serviceimpl;
+package com.dataprocessingpipeline.consumer.service.impl;
 
 import com.dataprocessingpipeline.dataaccess.model.MessageModel;
 import com.dataprocessingpipeline.dataaccess.dto.MessageDTO;

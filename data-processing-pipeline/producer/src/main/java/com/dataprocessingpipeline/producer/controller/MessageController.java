@@ -1,23 +1,25 @@
 package com.dataprocessingpipeline.producer.controller;
 
+import com.dataprocessingpipeline.producer.producer.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
-public class DataController {
-    private KingdomService service;
+@RequestMapping("/api")
+public class MessageController {
+    private Producer producer;
 
     @Autowired
-    public DataController(KingdomService service) {
-        this.service = service;
+    public MessageController(Producer producer) {
+        this.producer = producer;
     }
 
-    @PostMapping("/kingdom/create-for-user/{userId}")
-    public List<KingdomViewModel> createKingdomsForUser(@PathVariable long userId) {
-        return this.service.createForUser(userId);
+    @PostMapping("/messages")
+    public void createMessage(@RequestBody Object message) {
+        this.producer.sendMessage(message);
     }
 }
