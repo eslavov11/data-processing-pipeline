@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class MessageService {
-  private serverUrl = /*process.env.API_URL ||*/ 'http://localhost:8080/';
+  private serverUrl = /*process.env.API_URL ||*/ 'http://localhost:8083/';
   private stompClient;
   public messages;
 
