@@ -1,18 +1,15 @@
 package com.dataprocessingpipeline.producer.producer.impl;
 
 import com.dataprocessingpipeline.producer.producer.Producer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class ProducerKafkaImpl implements Producer {
-
-    private static final Logger logger = LoggerFactory.getLogger(ProducerKafkaImpl.class);
-
     @Value(value = "${topic.name}")
     private String TOPIC;
 
@@ -24,7 +21,7 @@ public class ProducerKafkaImpl implements Producer {
     }
 
     public void sendMessage(Object message) {
-        logger.info(String.format("#### -> Producing message -> %s", message));
+        log.debug(String.format("Producing message to topic %s -> %s", TOPIC, message));
         this.kafkaTemplate.send(TOPIC, message);
     }
 }
