@@ -11,14 +11,12 @@ The data processing pipeline provides a docker-compose setup, which consists of 
 The steps for running the project are as follows:
 - make sure you have jdk 11+ installed
 - install maven 3.6.0 +
-- docker & docker compose
-- 
--
-- run - "cd ./pipeline.. && sudo mvn clean package  -Dmaven.test.skip=true" - this will build both Spring applications, since they have the same pom.xml parent
-- make sure ports 4200, 9092, 8081,... are available on your host
+- install docker 18.09.2 or higher & docker compose 1.25.4 or higher
+- from directory "data-processing-pipeline" run - "mvn clean package  -Dmaven.test.skip=true" - this will build both Spring applications, since they have the same pom.xml parent
+- make sure ports 4200, 9092, 8083, 8084 are available on your host
 - run - "docker-compose up"
-- access angular client on localhost:4200 and send a JSON message through the form
-- call GET on localhost:8082 (the consumer app) to get all the stored messages
+- access angular client on localhost:4200 and send a JSON message through the form. In the bottom part of the page is the received websocket messages
+- call go to localhost:8084/api/messages (the consumer app) to get all the stored messages
 
 Additional steps for running the project for development:
 - install zookeeper and kafka
@@ -28,4 +26,5 @@ Additional steps for running the project for development:
 - start mongodb service
 - start zookeeper server and then kafka broker server
 - ng serve to start the client
+- set the profiles to dev for both the consumer and producer in order to use the dev properties file - "-Dspring.profiles.active=dev"
 
