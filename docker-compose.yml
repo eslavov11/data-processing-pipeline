@@ -30,7 +30,7 @@ services:
     links:
       - zookeeper:zookeeper
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka # use host IP for multiple brokers 192.168.99.100
+      KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_CREATE_TOPICS: "message:1:1"
     networks:
@@ -43,6 +43,9 @@ services:
       - "8083:8080"
     depends_on:
       - kafka
+    environment:
+      KAFKA_SERVERS: kafka:9092
+      LOG_LEVEL_APP: INFO
     networks:
       - shared-net
 
@@ -56,11 +59,13 @@ services:
       - mongo
     links:
       - mongo
+    environment:
+      KAFKA_SERVERS: kafka:9092
+      LOG_LEVEL_APP: INFO
     networks:
       - shared-net
       
   client:
-    container_name: client
     build: ./client
     volumes:
       - "./client:/usr/src/app" 
@@ -69,7 +74,7 @@ services:
     depends_on:
       - producer
     command: > 
-      bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
+      bash -c "npm install && ng serve --prod --host 0.0.0.0 --port 4200"
       
 networks:
   shared-net:

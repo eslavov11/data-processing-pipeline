@@ -3,10 +3,11 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {Observable} from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class MessageService {
-  private serverUrl = /*process.env.API_URL ||*/ 'http://localhost:8083/';
+  private serverUrl = environment.apiUrl;
   private stompClient;
   public messages;
 
